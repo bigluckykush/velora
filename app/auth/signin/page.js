@@ -1,10 +1,13 @@
 import  { FcGoogle  } from  "react-icons/fc";
 import  Link  from "next/link";
 import { auth, signIn } from "@/auth";
+import { redirect } from "next/navigation";
 
 export default async function SignIn() {
   const session = await auth();
-  console.log(session)
+  if(session?.user) {
+    redirect("/dashboard/create-post")
+  };
 
   return( 
     <main className="min-h-screen flex justify-center bg-gray-50 py-8 px-2">
