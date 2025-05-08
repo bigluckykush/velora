@@ -18,9 +18,10 @@ async function fetchPost(postid) {
    }
 }
 
-export default function postPage({params}) {
-    const {id} = params;
-    const post = fetchPost(id);
+export default async function postPage({ params }) {
+    const { id } = await params;
+    const post = await fetchPost(id);
+
    return (
     <main className="min-h-screen bg-gray-100 p-6">
        <h1 className="text-4xl font-bold text-blue-500 text-center mb-6">{post.title}</h1>
